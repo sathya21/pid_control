@@ -31,7 +31,7 @@ Self-Driving Car Engineer Nanodegree Program
 
 Tuning was done manually. First started off with p and d as 1 and i as 0.01. 
 
-Tuning p -  When Kp is high, steering value will also be high as it direclty multiples with CTE which ranges from +- 5 meteres.  Made Kp to 0.1 so that steering will not wobble a lot. 
+Tuning p -  When Kp is high, steering value will also be high as it direclty multiples with CTE which ranges from +- 5 metres.  Made Kp to 0.1 so that steering will not wobble a lot. 
 
 Tuning d - d value acts on the differential error with the previous value. This was set as 1.1. 10 times more than the Kp value. Otherwise there won't be any meaningful effect due to this
 
