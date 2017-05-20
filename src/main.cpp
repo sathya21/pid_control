@@ -34,6 +34,17 @@ int main()
 
   PID pid;
   // TODO: Initialize the pid variable.
+  pid.Kd = 1.1;
+  pid.Ki = 0.001;
+  pid.Kp  = 0.1;
+
+  pid.d_error = 0;
+  pid.i_error = 0;
+  pid.p_error = 0;
+
+
+
+
 
   h.onMessage([&pid](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode) {
     // "42" at the start of the message means there's a websocket message event.
@@ -58,6 +69,8 @@ int main()
           * another PID controller to control the speed!
           */
           
+          pid.UpdateError(cte);
+          steer_value = pid.getSteeringValue(cte);
           // DEBUG
           std::cout << "CTE: " << cte << " Steering Value: " << steer_value << std::endl;
 
@@ -67,6 +80,7 @@ int main()
           auto msg = "42[\"steer\"," + msgJson.dump() + "]";
           std::cout << msg << std::endl;
           ws.send(msg.data(), msg.length(), uWS::OpCode::TEXT);
+          std::cout << "error = " << pid.TotalError() <<  std::endl;
         }
       } else {
         // Manual driving
