@@ -21,6 +21,13 @@ PID::~PID() {
 
 void PID::Init(double Kp, double Ki, double Kd) {
 
+	this->Kp = Kp;
+	this->Kd = Kd;
+	this->Ki = Ki;
+
+	d_error = 0;
+	i_error = 0;
+	p_error = 0;
 }
 
 void PID::UpdateError(double cte) {
@@ -47,6 +54,4 @@ double PID::TotalError() {
 	return total_error / no_of_steps;
 
 }
-
-
 

@@ -34,9 +34,10 @@ int main()
 
   PID pid;
   // TODO: Initialize the pid variable.
-  pid.Kd = 1.1;
-  pid.Ki = 0.001;
-  pid.Kp  = 0.1;
+  //pid.Kd = 1.1;
+  //pid.Ki = 0.001;
+  //pid.Kp  = 0.1;
+  pid.Init(0.1,0.001,1.1);
 
   pid.d_error = 0;
   pid.i_error = 0;
